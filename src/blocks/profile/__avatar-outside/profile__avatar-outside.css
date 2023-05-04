@@ -1,0 +1,7 @@
+.profile__avatar-outside {
+    margin: 0;
+  }
+  
+  .profile__avatar-outside:hover .profile__avatar-button::before {
+    display: flex;
+  }
