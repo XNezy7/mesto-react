@@ -1,15 +1,23 @@
+/* eslint-disable react/prop-types */
+/* eslint-disable react/jsx-key */
 import React from "react";
-import PopupWithForm from "./PopupWithForm.js";
-import App from "./App.js";
-import Api from "../utils/Api.js";
-import { api } from "../utils/Api.js";
-import Card from "./Card.js";
+import {api} from "../utils/Api.js";
+import Card from "./Card.jsx";
+import ImagePopup from "./ImagePopup.jsx";
 
-function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardDelete, onCardLike, onCardClick }) {
+function Main({
+  onEditAvatar,
+  onEditProfile,
+  onAddPlace,
+  onCardDelete,
+  onCardLike,
+  onCardClick,
+}) {
   const [userDescription, setUserDescription] = React.useState();
   const [userName, setUserName] = React.useState();
   const [userAvatar, setUserAvatar] = React.useState();
   const [cards, setCards] = React.useState([]);
+
   function getInfo() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userInfo, newCardData]) => {
@@ -22,28 +30,22 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardDelete, onCardLik
         console.log(error);
       });
   }
-
-  // function addCard(){
-  //   api.getInitialCards().then((newCardData) => {
-  //     setCards(...cards, newCardData)
-  //   })
-  // }
   React.useEffect(() => {
     getInfo();
   }, []);
 
   const createCard = cards.map((element) => {
-    console.log(element)
     return (
       <Card
-        // key={element._id}
+        key={element._id}
         card={element}
-        // onCardClick={onCardClick}
-        // onCardLike={onCardLike}
-        // onCardDelete={onCardDelete}
+        onCardClick={onCardClick}
+        onCardLike={onCardLike}
+        onCardDelete={onCardDelete}
       />
     );
   });
+
   return (
     <main>
       <section className="profile">
@@ -77,6 +79,11 @@ function Main({ onEditAvatar, onEditProfile, onAddPlace, onCardDelete, onCardLik
           id="open_pop_up"
           onClick={onAddPlace}
         ></button>
+      </section>
+      <section className="places">
+        <ul className="places__list" id="places_list">
+          {createCard}
+        </ul>
       </section>
     </main>
   );
