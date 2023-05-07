@@ -48,6 +48,7 @@ function App() {
     setIsOpenedAdd(false)
     setIsOpenedDelete(false)
     setSelectedCard(false)
+    setIsOpenedImage(false)
   }
   
   return (
