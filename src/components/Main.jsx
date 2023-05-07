@@ -17,6 +17,7 @@ function Main({
   const [userName, setUserName] = React.useState();
   const [userAvatar, setUserAvatar] = React.useState();
   const [cards, setCards] = React.useState([]);
+  // const [userLikes, setUserLikes] = React.useState();
 
 
   function getInfo() {
@@ -25,7 +26,7 @@ function Main({
         setUserDescription(userInfo.about);
         setUserName(userInfo.name);
         setUserAvatar(userInfo.avatar);
-
+        // setUserLikes(userInfo.likes);
         setCards(newCardData);
       })
       .catch((error) => {
@@ -43,7 +44,7 @@ function Main({
       <Card
         key={element._id}
         card={element}
-        likes={element.likes}
+        // likes={element.likes}
         onCardClick={onCardClick}
         // onCardLike={onCardLike}
         onCardDelete={onCardDelete}
