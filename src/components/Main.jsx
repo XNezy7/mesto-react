@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 /* eslint-disable react/jsx-key */
 import React from "react";
-import {api} from "../utils/Api.js";
+import { api } from "../utils/Api.js";
 import Card from "./Card.jsx";
 import ImagePopup from "./ImagePopup.jsx";
 
@@ -13,12 +13,11 @@ function Main({
   // onCardLike,
   onCardClick,
 }) {
-  const [userDescription, setUserDescription] = React.useState();
-  const [userName, setUserName] = React.useState();
-  const [userAvatar, setUserAvatar] = React.useState();
+  const [userDescription, setUserDescription] = React.useState("");
+  const [userName, setUserName] = React.useState("");
+  const [userAvatar, setUserAvatar] = React.useState("");
   const [cards, setCards] = React.useState([]);
   // const [userLikes, setUserLikes] = React.useState();
-
 
   function getInfo() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
@@ -37,7 +36,7 @@ function Main({
     getInfo();
   }, []);
 
-  // const 
+  // const
 
   const createCard = cards.map((element) => {
     return (

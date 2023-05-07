@@ -4,7 +4,9 @@ export const profileButton = document.querySelector("#profile_edit");
 export const cardFormElement = document.querySelector("#card_popup");
 export const buttonAddCard = document.querySelector("#open_pop_up");
 export const photoExpand = document.querySelector("#photo_popup");
-export const inputsCardForm = Array.from(cardFormElement.querySelectorAll(".popup__input"));
+export const inputsCardForm = Array.from(
+  cardFormElement.querySelectorAll(".popup__input")
+);
 export const cardForm = document.querySelector(".popup__form_card");
 export const profileForm = document.querySelector(".popup__form_profile");
 export const avatarForm = document.querySelector(".popup__form_avatar");

@@ -6,70 +6,73 @@ import Main from "./Main.jsx";
 import PopupWithForm from "./PopupWithForm.jsx";
 import ImagePopup from "./ImagePopup.jsx";
 
-
 function App() {
-
   const [isOpenedAvatar, setIsOpenedAvatar] = React.useState(false);
   const [isOpenedEdit, setIsOpenedEdit] = React.useState(false);
   const [isOpenedAdd, setIsOpenedAdd] = React.useState(false);
   const [isOpenedDelete, setIsOpenedDelete] = React.useState(false);
   const [selectedCard, setSelectedCard] = React.useState({});
-  const [isOpenedImage, setIsOpenedImage ] = React.useState(false)
-  
+  const [isOpenedImage, setIsOpenedImage] = React.useState(false);
+
   // const [cardLike, setCardLike] = React.useState(false);
 
   // function handleCardLike(){
   //   setCardLike(!cardLike)
   // }
 
-  function handleCardClick(card){
+  function handleCardClick(card) {
     setIsOpenedImage(true);
     setSelectedCard(card);
   }
 
   function handleEditAvatarClick() {
-    setIsOpenedAvatar(!isOpenedAvatar)
+    setIsOpenedAvatar(!isOpenedAvatar);
   }
 
   function handleEditProfileClick() {
-  setIsOpenedEdit(!isOpenedEdit)
+    setIsOpenedEdit(!isOpenedEdit);
   }
 
   function handleAddPlaceClick() {
-    setIsOpenedAdd(!isOpenedAdd)
+    setIsOpenedAdd(!isOpenedAdd);
   }
 
-  function handleCardDelete(){
-    setIsOpenedDelete(!isOpenedDelete)
+  function handleCardDelete() {
+    setIsOpenedDelete(!isOpenedDelete);
   }
-  function closeAllPopups(){
-    setIsOpenedAvatar(false)
-    setIsOpenedEdit(false)
-    setIsOpenedAdd(false)
-    setIsOpenedDelete(false)
-    setSelectedCard(false)
-    setIsOpenedImage(false)
+  function closeAllPopups() {
+    setIsOpenedAvatar(false);
+    setIsOpenedEdit(false);
+    setIsOpenedAdd(false);
+    setIsOpenedDelete(false);
+    setSelectedCard(false);
+    setIsOpenedImage(false);
   }
-  
+
   return (
     <div className="page">
       <Header />
       <ImagePopup
-      isOpened={isOpenedImage}
-      onClose={closeAllPopups}
-      card={selectedCard}
+        isOpened={isOpenedImage}
+        onClose={closeAllPopups}
+        card={selectedCard}
       />
       <Main
-       onEditProfile= {handleEditProfileClick}
-       onAddPlace = {handleAddPlaceClick}
-       onEditAvatar = {handleEditAvatarClick}
-       onCardDelete = {handleCardDelete}
-       onCardClick = {handleCardClick}
-       onClose = {closeAllPopups}
-      //  onCardLike={handleCardLike}
+        onEditProfile={handleEditProfileClick}
+        onAddPlace={handleAddPlaceClick}
+        onEditAvatar={handleEditAvatarClick}
+        onCardDelete={handleCardDelete}
+        onCardClick={handleCardClick}
+        onClose={closeAllPopups}
+        //  onCardLike={handleCardLike}
       />
       <Footer />
-      <PopupWithForm title="Редактировать профиль" name="profile" isOpened={isOpenedEdit} onClose={closeAllPopups}> 
+      <PopupWithForm
+        title="Редактировать профиль"
+        name="profile"
+        isOpened={isOpenedEdit}
+        onClose={closeAllPopups}
+      >
         <label className="popup__label">
           <input
             id="name"
@@ -98,11 +101,21 @@ function App() {
 
           <span className="job-error popup__error"></span>
         </label>
-        <button type="submit" className="popup__button" id="info-submit" onClick={handleEditProfileClick}>
+        {/* <button
+          type="submit"
+          className="popup__button"
+          id="info-submit"
+          onClick={handleEditProfileClick}
+        >
           Сохранить
-        </button>
+        </button> */}
       </PopupWithForm>
-      <PopupWithForm title="Новое место" name="card" isOpened={isOpenedAdd} onClose={closeAllPopups}>
+      <PopupWithForm
+        title="Новое место"
+        name="card"
+        isOpened={isOpenedAdd}
+        onClose={closeAllPopups}
+      >
         <label className="popup__label">
           <input
             id="place"
@@ -129,11 +142,21 @@ function App() {
 
           <span className="photo-avatar-error popup__error"></span>
         </label>
-        <button type="submit" className="popup__button" enabled="false" onClick={handleAddPlaceClick}>
+        {/* <button
+          type="submit"
+          className="popup__button"
+          enabled="false"
+          onClick={handleAddPlaceClick}
+        >
           Сохранить
-        </button>
+        </button> */}
       </PopupWithForm>
-      <PopupWithForm title="Обновить аватар" name="avatar" isOpened={isOpenedAvatar} onClose={closeAllPopups}>
+      <PopupWithForm
+        title="Обновить аватар"
+        name="avatar"
+        isOpened={isOpenedAvatar}
+        onClose={closeAllPopups}
+      >
         <label className="popup__label">
           <input
             id="photo"
@@ -146,11 +169,20 @@ function App() {
 
           <span className="photo-error popup__error"></span>
         </label>
-        <button className="popup__button" type="submit" onClick={handleEditAvatarClick}>
+        {/* <button
+          className="popup__button"
+          type="submit"
+          onClick={handleEditAvatarClick}
+        >
           Сохранить
-        </button>
+        </button> */}
       </PopupWithForm>
-      <PopupWithForm title="Вы уверены?" name="delete" isOpened={isOpenedDelete} onClose={closeAllPopups}>
+      <PopupWithForm
+        title="Вы уверены?"
+        name="delete"
+        isOpened={isOpenedDelete}
+        onClose={closeAllPopups}
+      >
         <button className="popup__button" id="delete-button" type="submit">
           Да
         </button>
