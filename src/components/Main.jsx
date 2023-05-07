@@ -10,7 +10,7 @@ function Main({
   onEditProfile,
   onAddPlace,
   onCardDelete,
-  onCardLike,
+  // onCardLike,
   onCardClick,
 }) {
   const [userDescription, setUserDescription] = React.useState();
@@ -18,12 +18,14 @@ function Main({
   const [userAvatar, setUserAvatar] = React.useState();
   const [cards, setCards] = React.useState([]);
 
+
   function getInfo() {
     Promise.all([api.getUserInfo(), api.getInitialCards()])
       .then(([userInfo, newCardData]) => {
         setUserDescription(userInfo.about);
         setUserName(userInfo.name);
         setUserAvatar(userInfo.avatar);
+
         setCards(newCardData);
       })
       .catch((error) => {
@@ -34,13 +36,16 @@ function Main({
     getInfo();
   }, []);
 
+  // const 
+
   const createCard = cards.map((element) => {
     return (
       <Card
         key={element._id}
         card={element}
+        likes={element.likes}
         onCardClick={onCardClick}
-        onCardLike={onCardLike}
+        // onCardLike={onCardLike}
         onCardDelete={onCardDelete}
       />
     );

@@ -16,11 +16,11 @@ function Card(props) {
               <h2 className="card__title">{props.card.name}</h2>
               <div className="card__description">
                 <button type="button" className="card__like-button"></button>
-                <span className="card__like-count">0</span>
+                <span className="card__like-count"></span>
               </div>
             </div>
           </li>             
   );
 }
-
+// {props.card.likes}
 export default Card;

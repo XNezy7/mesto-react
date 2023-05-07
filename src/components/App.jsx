@@ -4,6 +4,7 @@ import Header from "./Header.jsx";
 import Footer from "./Footer.jsx";
 import Main from "./Main.jsx";
 import PopupWithForm from "./PopupWithForm.jsx";
+import ImagePopup from "./ImagePopup.jsx";
 
 
 function App() {
@@ -12,15 +13,18 @@ function App() {
   const [isOpenedEdit, setIsOpenedEdit] = React.useState(false);
   const [isOpenedAdd, setIsOpenedAdd] = React.useState(false);
   const [isOpenedDelete, setIsOpenedDelete] = React.useState(false);
-  const [selectedCard, setSelectedCard] = React.useState(false);
-  const [cardLike, setCardLike] = React.useState(false);
+  const [selectedCard, setSelectedCard] = React.useState({});
+  const [isOpenedImage, setIsOpenedImage ] = React.useState(false)
+  
+  // const [cardLike, setCardLike] = React.useState(false);
 
-  function handleCardLike(){
-    setCardLike(!cardLike)
-  }
+  // function handleCardLike(){
+  //   setCardLike(!cardLike)
+  // }
 
-  function handleCardClick(){
-    setSelectedCard(!selectedCard)
+  function handleCardClick(card){
+    setIsOpenedImage(true);
+    setSelectedCard(card);
   }
 
   function handleEditAvatarClick() {
@@ -49,6 +53,11 @@ function App() {
   return (
     <div className="page">
       <Header />
+      <ImagePopup
+      isOpened={isOpenedImage}
+      onClose={closeAllPopups}
+      card={selectedCard}
+      />
       <Main
        onEditProfile= {handleEditProfileClick}
        onAddPlace = {handleAddPlaceClick}
@@ -56,7 +65,7 @@ function App() {
        onCardDelete = {handleCardDelete}
        onCardClick = {handleCardClick}
        onClose = {closeAllPopups}
-       onCardLike={handleCardLike}
+      //  onCardLike={handleCardLike}
       />
       <Footer />
       <PopupWithForm title="Редактировать профиль" name="profile" isOpened={isOpenedEdit} onClose={closeAllPopups}> 
