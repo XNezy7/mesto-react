@@ -25,7 +25,7 @@ function PopupWithForm({ name, title, children, isOpened, onClose, handleEditAva
             type="submit"
             onClick={handleEditAvatarClick}
           >
-            {buttonText="Сохранить"}
+            {buttonText || "Сохранить"}
           </button>
         </div>
       </form>
